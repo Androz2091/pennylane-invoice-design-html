@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Manrope:400,600,700,800' rel='stylesheet'>
+    <title>Facture Simon LEFORT EIRL</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            font-size: 14px;
+            line-height: 1.4;
+            color: #333;
+            background: #fff;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .company-name {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .company-info {
+            text-align: right;
+            color: #666;
+        }
+
+        .invoice-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .invoice-left {
+            flex: 1;
+        }
+
+        .invoice-right {
+            flex: 1;
+            text-align: right;
+            color: #666;
+        }
+
+        .section-title {
+            font-size: 18px;
+            color: #999;
+            margin-bottom: 15px;
+        }
+
+        .detail-row {
+            display: flex;
+            margin-bottom: 5px;
+        }
+
+        .detail-label {
+            font-weight: 700;
+            width: 140px;
+        }
+
+        .detail-value {
+            flex: 1;
+        }
+
+        .products-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+        }
+
+        .products-table th {
+            background: #f8f8f8;
+            padding: 12px 8px;
+            text-align: left;
+            font-weight: bold;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .products-table th:last-child,
+        .products-table td:last-child {
+            text-align: left;
+        }
+
+        .products-table td {
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+            vertical-align: top;
+            font-size: 13px;
+        }
+
+        .products-table td strong {
+            font-size: 14px;
+        }
+
+        .product-description {
+            margin-top: 5px;
+            font-size: 12px;
+            color: #666;
+            padding: 10px 8px;
+        }
+
+        .product-description ul {
+            margin-left: 15px;
+            margin-top: 5px;
+        }
+
+        .product-note {
+            font-size: 12px;
+            color: #666;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .tva-section {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+        }
+
+        .tva-details {
+            flex: 1;
+        }
+
+        .tva-summary {
+            width: 250px;
+            margin-left: 50px;
+        }
+
+        .tva-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .tva-table th,
+        .tva-table td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+            font-size: 13px;
+        }
+
+        .tva-table th:last-child,
+        .tva-table td:last-child {
+            text-align: right;
+        }
+
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .summary-table td {
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+            font-size: 13px;
+        }
+
+        .summary-table .label {
+            font-weight: bold;
+        }
+
+        .summary-table .value {
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .total-row {
+            background: #f8f8f8;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .pay-button {
+            background: black;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            width: 100%;
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        .payment-section {
+            background: #f8f8f8;
+            padding: 20px;
+            margin: 30px 0;
+        }
+
+        .payment-grid {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 10px;
+        }
+
+        .payment-label {
+            font-weight: bold;
+        }
+
+        .footer-note {
+            font-size: 12px;
+            color: #666;
+            margin-top: 20px;
+            line-height: 1.5;
+        }
+
+        .party-name {
+            font-weight: bold;
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="company-name">Simon LEFORT EIRL</div>
+        <div class="company-info">
+            <div class="label" style="color: #333;">Émetteur ou Émettrice</div>
+            <div class="party-name">Simon LEFORT EIRL</div>
+            <div>200 Rue des Tilleuls</div>
+            <div>31450 Saint-Sulpice - France</div>
+            <div>simon31450@gmail.com</div>
+        </div>
+    </div>
+
+    <div class="invoice-details">
+        <div class="invoice-left">
+            <div class="section-title">Facture</div>
+            <div class="detail-row">
+                <div class="detail-label">Numéro</div>
+                <div class="detail-value">F-2025-309</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Date d'émission</div>
+                <div class="detail-value">10 juil. 2025</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Date d'échéance</div>
+                <div class="detail-value">09 août 2025</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Type de vente</div>
+                <div class="detail-value">Prestations de services</div>
+            </div>
+        </div>
+        <div class="invoice-right">
+            <div class="label" style="color: #333;">Client ou Cliente</div>
+            <div class="party-name">Federico Beniador</div>
+            <div>- Uruguay</div>
+        </div>
+    </div>
+
+    <table class="products-table">
+        <thead>
+            <tr>
+                <th>Produits</th>
+                <th>Qté</th>
+                <th>Prix u. HT</th>
+                <th>TVA (%)</th>
+                <th>Total HT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Software development services</strong></td>
+                <td>1 heure</td>
+                <td>$1,506.00</td>
+                <td>Aucune</td>
+                <td>$1,506.00</td>
+            </tr>
+            <tr>
+                <td colspan="5" class="product-description">
+                    <ul>
+                        <li>Main dashboard page: displays a summary table of all students</li>
+                        <li>Student detail view: shows detailed student info, including class progress, stats, and list of booked(/cancelled) classes</li>
+                        <li>Data visualization tools (not charged): additional features like booking/scheduling trends over time can be added later if needed</li>
+                    </ul>
+                    <div class="product-note">
+                        Will be available at dashboard.super.space. It will also require a Render account (will be about $7/m).
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Software development services</strong></td>
+                <td>1 heure</td>
+                <td>$1,506.00</td>
+                <td>Aucune</td>
+                <td>$1,506.00</td>
+            </tr>
+            <tr>
+                <td colspan="5" class="product-description">
+                    <ul>
+                        <li>Main dashboard page: displays a summary table of all students</li>
+                        <li>Student detail view: shows detailed student info, including class progress, stats, and list of booked(/cancelled) classes</li>
+                        <li>Data visualization tools (not charged): additional features like booking/scheduling trends over time can be added later if needed</li>
+                    </ul>
+                    <div class="product-note">
+                        Will be available at dashboard.super.space. It will also require a Render account (will be about $7/m).
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="tva-section">
+        <div class="tva-details">
+            <div class="section-title">Détails TVA</div>
+            <table class="tva-table">
+                <thead>
+                    <tr>
+                        <th>Taux</th>
+                        <th>Montant TVA</th>
+                        <th>Base HT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Aucune</td>
+                        <td>$0</td>
+                        <td>$1,506.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tva-summary">
+            <div class="section-title">Récapitulatif</div>
+            <table class="summary-table">
+                <tr>
+                    <td class="label">Total HT</td>
+                    <td class="value">$1,506.00</td>
+                </tr>
+                <tr>
+                    <td class="label">Total TVA</td>
+                    <td class="value">$0</td>
+                </tr>
+                <tr class="total-row">
+                    <td class="label">Total TTC</td>
+                    <td class="value">$1,506.00</td>
+                </tr>
+            </table>
+            <button class="pay-button">Payer maintenant</button>
+        </div>
+    </div>
+
+    <div class="payment-section">
+        <div class="section-title">Paiement</div>
+        <div class="payment-grid">
+            <div class="payment-label">Moyen de paiement</div>
+            <div>Virement / Carte de crédit</div>
+            
+            <div class="payment-label">Établissement</div>
+            <div>SGE</div>
+            
+            <div class="payment-label">IBAN</div>
+            <div>FR76 8920 4387 2109 2987 4873 120</div>
+            
+            <div class="payment-label">BIC</div>
+            <div>SGEFR7</div>
+            
+            <div class="payment-label">Référence</div>
+            <div>PLFA4XRZJCICZX</div>
+        </div>
+        
+        <div style="margin-top: 15px; font-size: 12px; color: #666;">
+            Merci d'inclure la référence dans le libellé de votre virement pour que votre paiement soit correctement identifié.
+        </div>
+    </div>
+
+    <div class="footer-note">
+        Pénalités de retard : trois fois le taux annuel d'intérêt légal en vigueur calculé depuis la date d'échéance jusqu'à complet paiement du prix.  Indemnité forfaitaire pour frais de recouvrement en cas de retard de paiement : 40 €
+    </div>
+</body>
+</html>
