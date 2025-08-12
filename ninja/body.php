@@ -29,9 +29,14 @@
 
     <section class="invoice-products">
         <ninja>
+            {% set entity = null %}
             {% if invoices is defined and invoices is not empty %}
-            {% set invoice = invoices | first %}
+                {% set entity = invoices | first %}
+            {% elseif quotes is defined and quotes is not empty %}
+                {% set entity = quotes | first %}
+            {% endif %}
 
+            {% if entity %}
             <table class="product-table">
                 <thead>
                     <tr>
@@ -42,7 +47,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for item in invoice.line_items %}
+                    {% for item in entity.line_items %}
                     <tr>
                         {% if not (item.quantity == false and item.cost <= '0.001' ) %}
                         <td class="item-key">{{ item.product_key }}</td>
